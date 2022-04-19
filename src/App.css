@@ -162,7 +162,6 @@
 	height: max(100vh - 8vh, 100vh - 60px);
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 }
 
 .input-header-half {
@@ -181,6 +180,27 @@
 }
 
 .input-main {
-	flex-basis: max(95%, 100% - 30px);
+	height: max(95%, 100% - 30px);
 	padding-left: 10px;
+	margin-top: 12px;
+	display: flex;
+	align-items: flex-start;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 500;
+}
+
+.fill-width,
+.fill-width:hover {
+	flex-basis: 100%;
+	border: none;
+	outline: 0;
+	min-width: 100%;
+	font-family: "Roboto";
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 500;
+	word-wrap: normal;
+	resize: none;
+	height: 100%;
 }

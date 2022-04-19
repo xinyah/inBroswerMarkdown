@@ -3,8 +3,16 @@ import "./App.css";
 
 function App() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [textVal, setTextVal] = useState(
+		"Lorem ipsum dolor sit amet consectetur adipisicing elit.Atque perferendis amet voluptatum porro totam sapiente?Eaque quos saepe earum sint sunt delectus? Dignissimos nobis facilis ipsam numquam aut magni. Placeat."
+	);
 	const openMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
+	};
+
+	const logTextChange = function (event: any) {
+		setTextVal(event.target.value);
+		console.log(event.target.value);
 	};
 
 	return (
@@ -119,22 +127,22 @@ function App() {
 				</div>
 				<div className="input">
 					<p className="input-header-half">MARDOWN</p>
-					<p className="input-main">
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Nobis et repudiandae, asperiores harum incidunt
-						dignissimos enim nulla dicta, ratione, illo eum ad
-						nostrum cum dolores accusamus voluptas magnam ipsa!
-						Similique?
-					</p>
+					<div className="input-main">
+						<textarea
+							className="fill-width"
+							onChange={logTextChange}
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit.Atque perferendis amet voluptatum porro totam
+							sapiente?Eaque quos saepe earum sint sunt delectus?
+							Dignissimos nobis facilis ipsam numquam aut magni.
+							Placeat.
+						</textarea>
+					</div>
 				</div>
 				<div className="input right">
 					<p className="input-header-half">PREVIEW</p>
-					<p className="input-main">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Atque perferendis amet voluptatum porro totam sapiente?
-						Eaque quos saepe earum sint sunt delectus? Dignissimos
-						nobis facilis ipsam numquam aut magni. Placeat.
-					</p>
+					<p className="input-main">{textVal}</p>
 				</div>
 			</div>
 		</div>
