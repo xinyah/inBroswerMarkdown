@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.nav {
+	flex-basis: 100%;
+	height: min(8vh, 60px);
+	background-color: #2b2d31;
+	display: flex;
+	align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menu {
+	height: min(6vh, 48px);
+	width: min(6vh, 48px);
+	stroke: #e4e4e4;
+	align-self: center;
+	background-color: #35393f;
+	margin-left: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu:hover {
+	cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title {
+	padding-left: 24px;
+	padding-right: 24px;
+	font-size: 20px;
+	color: #e4e4e4;
+	letter-spacing: 2px;
+	font-weight: 500;
+	border-right: 1px solid #7c8187;
 }
 
-.App-link {
-  color: #61dafb;
+.doc-icon {
+	height: 48px;
+	width: 48px;
+	padding-left: 10px;
+	padding-right: 10px;
+	stroke: #e4e4e4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.document-info {
+	font-size: 15px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.info-header {
+	color: #7c8187;
+	flex-basis: 100%;
+}
+
+.info-title {
+	color: #e4e4e4;
+	flex-basis: 100%;
+}
+
+.delete {
+	height: 36px;
+	width: 36px;
+	margin-left: auto;
+	padding-right: 10px;
+	stroke: #7c8187;
+}
+
+.save-doc {
+	flex-basis: 150px;
+	height: 36px;
+	margin-right: 10px;
+	background-color: #e46643;
+	border: none;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+}
+
+.save-doc svg {
+	height: 24px;
+	width: 24px;
+	margin-left: 5px;
+	transform: translate(0, -1.5px);
+	stroke: white;
+}
+
+.save-doc p {
+	padding-left: 10px;
+	color: white;
+}
+
+.input {
+	flex-basis: 50%;
+	height: max(100vh - 8vh, 100vh - 60px);
+}
+
+.input-header-half {
+	flex-basis: min(5%, 30px);
+	padding-left: 10px;
+	font-size: 15px;
+	color: #7c8187;
+	font-weight: 500;
+	letter-spacing: 2px;
+	background-color: #e4e4e4;
+	line-height: max(5%, 30px);
+}
+
+.right {
+	border-left: 1px dotted #7c8187;
+}
+
+.input-main {
+	flex-basis: max(95%, 100% - 30px);
+	padding-left: 10px;
 }
