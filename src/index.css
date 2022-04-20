@@ -35,10 +35,11 @@ body {
 	min-height: 100vh;
 	text-rendering: optimizeSpeed;
 	line-height: 1.5;
+	overflow: hidden;
 }
 
 body {
-	margin: 0;
+	margin-top: 0;
 	font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
 		"Droid Sans", "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased;

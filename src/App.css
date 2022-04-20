@@ -1,6 +1,7 @@
 .container {
 	display: flex;
 	flex-wrap: none;
+	font-family: "Roboto";
 }
 
 .main-content {
@@ -59,6 +60,7 @@
 	height: 12px;
 	width: 12px;
 	stroke: white;
+	transform: translate(-54px, -0.5px);
 }
 
 .side-bar-button p {
@@ -160,13 +162,11 @@
 .input {
 	flex-basis: 50%;
 	height: max(100vh - 8vh, 100vh - 60px);
-	display: flex;
-	flex-direction: column;
 }
 
 .input-header-half {
 	flex-basis: min(5%, 30px);
-	padding-left: 10px;
+	padding-left: 20px;
 	font-size: 15px;
 	color: #7c8187;
 	font-weight: 500;
@@ -180,14 +180,19 @@
 }
 
 .input-main {
+	flex-basis: 50%;
 	height: max(95%, 100% - 30px);
-	padding-left: 10px;
+	padding-left: 20px;
 	margin-top: 12px;
 	display: flex;
 	align-items: flex-start;
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 500;
+}
+
+.right-padding {
+	padding-right: 10px;
 }
 
 .fill-width,
@@ -203,4 +208,59 @@
 	word-wrap: normal;
 	resize: none;
 	height: 100%;
+}
+
+.markdown-text {
+	padding-left: 20px;
+	font-family: "Roboto Slab";
+	margin-top: 12px;
+	line-height: 1.8;
+	height: max(95%, 100% - 30px);
+	overflow-y: scroll;
+}
+
+.markdown-text h1 {
+	font-size: 32px;
+	font-weight: 500;
+}
+
+.markdown-text h2 {
+	font-size: 28px;
+	font-weight: 300;
+}
+
+.markdown-text h3 {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.markdown-text h4 {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.markdown-text h5 {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.markdown-text h6 {
+	font-size: 16px;
+	font-weight: 500;
+	color: #e46643;
+}
+
+.markdown-text blockquote {
+	background-color: #e4e4e4;
+	margin: 10px 10px;
+	padding: 20px 20px;
+	border-left: 10px solid #e46643;
+	border-radius: 5px;
+}
+
+.markdown-text pre {
+	margin: 10px 10px;
+	padding: 20px 20px;
+	background-color: #e4e4e4;
+	border-radius: 5px;
 }

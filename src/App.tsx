@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { marked } from "marked";
+import Parser from "html-react-parser";
+import placeholder from "./asset/placeholder.json";
 import "./App.css";
 
 function App() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [textVal, setTextVal] = useState(
-		"Lorem ipsum dolor sit amet consectetur adipisicing elit.Atque perferendis amet voluptatum porro totam sapiente?Eaque quos saepe earum sint sunt delectus? Dignissimos nobis facilis ipsam numquam aut magni. Placeat."
+		"Getting your markdonw ready for you!"
 	);
+
+	useEffect(() => {
+		setTextVal(marked.parse(placeholder[1].content));
+	}, []);
+
 	const openMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
 	const logTextChange = function (event: any) {
-		setTextVal(event.target.value);
-		console.log(event.target.value);
+		setTextVal(marked.parse(event.target.value));
 	};
 
 	return (
@@ -127,22 +134,19 @@ function App() {
 				</div>
 				<div className="input">
 					<p className="input-header-half">MARDOWN</p>
-					<div className="input-main">
+					<div className="input-main right-padding">
 						<textarea
 							className="fill-width"
 							onChange={logTextChange}
-						>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.Atque perferendis amet voluptatum porro totam
-							sapiente?Eaque quos saepe earum sint sunt delectus?
-							Dignissimos nobis facilis ipsam numquam aut magni.
-							Placeat.
-						</textarea>
+							defaultValue={placeholder[1].content}
+						></textarea>
 					</div>
 				</div>
 				<div className="input right">
 					<p className="input-header-half">PREVIEW</p>
-					<p className="input-main">{textVal}</p>
+					<div className="markdown-text right-padding">
+						{Parser(textVal)}
+					</div>
 				</div>
 			</div>
 		</div>
