@@ -125,6 +125,15 @@
 .info-title {
 	color: #e4e4e4;
 	flex-basis: 100%;
+	background-color: #2b2d31;
+	border: none;
+	font-family: "Roboto";
+	transform: translate(-1.5px, 0px);
+	font-weight: 700;
+}
+
+.info-title:focus {
+	outline: none;
 }
 
 .delete {
@@ -133,6 +142,7 @@
 	margin-left: auto;
 	padding-right: 10px;
 	stroke: #7c8187;
+	cursor: pointer;
 }
 
 .save-doc {
@@ -144,6 +154,7 @@
 	border-radius: 5px;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .save-doc svg {
@@ -176,7 +187,7 @@
 }
 
 .right {
-	border-left: 1px dotted #7c8187;
+	border-left: 1px solid #b2b7bd;
 }
 
 .input-main {

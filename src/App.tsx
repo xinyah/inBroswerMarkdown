@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DOMPurify from "dompurify";
 import { marked } from "marked";
 import Parser from "html-react-parser";
 import placeholder from "./asset/placeholder.json";
@@ -9,9 +10,26 @@ function App() {
 	const [textVal, setTextVal] = useState(
 		"Getting your markdonw ready for you!"
 	);
+	const [plainText, setPlainText] = useState("");
+	const [curDocName, setCurDocName] = useState("Markdown.md");
 
 	useEffect(() => {
-		setTextVal(marked.parse(placeholder[1].content));
+		const history: string | null = localStorage.getItem("LastSaved");
+		const history_text: string | null = localStorage.getItem(`${history}`);
+		if (history !== null) {
+			setCurDocName(history);
+			if (history_text !== null) {
+				setTextVal(DOMPurify.sanitize(marked.parse(history_text)));
+				setPlainText(history_text);
+			} else {
+				setTextVal("");
+			}
+		} else {
+			setTextVal(
+				DOMPurify.sanitize(marked.parse(placeholder[1].content))
+			);
+			setPlainText(placeholder[1].content);
+		}
 	}, []);
 
 	const openMenu = () => {
@@ -19,7 +37,25 @@ function App() {
 	};
 
 	const logTextChange = function (event: any) {
-		setTextVal(marked.parse(event.target.value));
+		setTextVal(DOMPurify.sanitize(marked.parse(event.target.value)));
+		setPlainText(event.target.value);
+	};
+
+	const handleCurDocName = function (event: any) {
+		setCurDocName(event.target.value);
+	};
+
+	const handleSave = function (event: any) {
+		localStorage.setItem(`${curDocName}`, plainText);
+		localStorage.setItem("LastSaved", curDocName);
+	};
+
+	const handleDelete = function () {
+		localStorage.removeItem(`${curDocName}`);
+		localStorage.removeItem("LastSaved");
+		setTextVal("");
+		setPlainText("");
+		setCurDocName("");
 	};
 
 	return (
@@ -98,7 +134,12 @@ function App() {
 					</svg>
 					<div className="document-info">
 						<p className="info-header">Document Name</p>
-						<p className="info-title">welcome.md</p>
+						<input
+							className="info-title"
+							value={curDocName}
+							onChange={handleCurDocName}
+							placeholder={"Markdown.md"}
+						></input>
 					</div>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -107,6 +148,7 @@ function App() {
 						viewBox="0 0 24 24"
 						stroke="currentColor"
 						strokeWidth={2}
+						onClick={handleDelete}
 					>
 						<path
 							strokeLinecap="round"
@@ -114,7 +156,11 @@ function App() {
 							d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
 						/>
 					</svg>
-					<button type="button" className="save-doc">
+					<button
+						type="button"
+						className="save-doc"
+						onClick={handleSave}
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							className="h-6 w-6"
@@ -138,7 +184,7 @@ function App() {
 						<textarea
 							className="fill-width"
 							onChange={logTextChange}
-							defaultValue={placeholder[1].content}
+							value={plainText}
 						></textarea>
 					</div>
 				</div>
